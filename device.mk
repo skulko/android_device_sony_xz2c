@@ -66,5 +66,6 @@ PRODUCT_PACKAGES += \
    FakeStore \
    GmsCore \
    GsfProxy \
+   IchnaeaNlpBackend \
    LocalGSMNlpBackend \
    NominatimNlpBackend
