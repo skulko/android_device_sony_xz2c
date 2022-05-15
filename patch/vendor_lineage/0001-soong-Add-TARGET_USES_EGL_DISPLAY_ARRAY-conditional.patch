@@ -1,0 +1,69 @@
+From a149e1b0d3976e6479c7a65de13c92d26d8618d8 Mon Sep 17 00:00:00 2001
+From: Danny Trunk <dtrunk90@gmail.com>
+Date: Wed, 23 Mar 2022 22:28:02 +0100
+Subject: [PATCH] soong: Add TARGET_USES_EGL_DISPLAY_ARRAY conditional
+
+This soong variable is used to conditionally revert a commit [1]
+which causes random camera crashes on tama devices
+
+[1] https://github.com/LineageOS/android_frameworks_native/commit/a9550f3fe9097e0934e9b44c5aac6b914fb46aec
+
+Change-Id: I749c7029f8f2b6d6d95b066aed4929c33e3c75e7
+---
+ build/soong/Android.bp     | 17 +++++++++++++++++
+ config/BoardConfigSoong.mk |  4 +++-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/build/soong/Android.bp b/build/soong/Android.bp
+index d9c99267..7a33aba6 100644
+--- a/build/soong/Android.bp
++++ b/build/soong/Android.bp
+@@ -375,6 +375,23 @@ camera_parameter_library {
+     },
+ }
+ 
++soong_config_module_type {
++    name: "egl_display_array",
++    module_type: "cc_defaults",
++    config_namespace: "lineageGlobalVars",
++    bool_variables: ["uses_egl_display_array"],
++    properties: ["cflags"],
++}
++
++egl_display_array {
++    name: "egl_display_array_defaults",
++    soong_config_variables: {
++        uses_egl_display_array: {
++            cflags: ["-DEGL_DISPLAY_ARRAY"],
++        },
++    },
++}
++
+ // NVIDIA specific config modules
+ soong_config_module_type {
+     name: "nvidia_enhancements",
+diff --git a/config/BoardConfigSoong.mk b/config/BoardConfigSoong.mk
+index 9fdc1277..05491ea1 100644
+--- a/config/BoardConfigSoong.mk
++++ b/config/BoardConfigSoong.mk
+@@ -44,7 +44,8 @@ SOONG_CONFIG_lineageGlobalVars += \
+     target_trust_usb_control_path \
+     target_trust_usb_control_enable \
+     target_trust_usb_control_disable \
+-    uses_camera_parameter_lib
++    uses_camera_parameter_lib \
++    uses_egl_display_array
+ 
+ SOONG_CONFIG_NAMESPACES += lineageNvidiaVars
+ SOONG_CONFIG_lineageNvidiaVars += \
+@@ -75,6 +76,7 @@ SOONG_CONFIG_lineageGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT
+ SOONG_CONFIG_lineageGlobalVars_ignores_ftp_pptp_conntrack_failure := $(TARGET_IGNORES_FTP_PPTP_CONNTRACK_FAILURE)
+ SOONG_CONFIG_lineageGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
+ SOONG_CONFIG_lineageGlobalVars_needs_netd_direct_connect_rule := $(TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE)
++SOONG_CONFIG_lineageGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
+ SOONG_CONFIG_lineageNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
+ SOONG_CONFIG_lineageQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
+ SOONG_CONFIG_lineageQcomVars_should_wait_for_qsee := $(TARGET_KEYMASTER_WAIT_FOR_QSEE)
+-- 
+2.35.1
+
