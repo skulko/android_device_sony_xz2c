@@ -62,10 +62,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
    AppleNlpBackend \
    AuroraServices \
-   DejaVuNlpBackend \
    FakeStore \
    GmsCore \
    GsfProxy \
    IchnaeaNlpBackend \
    LocalGSMNlpBackend \
    NominatimNlpBackend
+
+# pre-built Apps
+PRODUCT_PACKAGES += \
+  SimpleKeyboard
