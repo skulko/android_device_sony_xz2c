@@ -60,7 +60,6 @@ PRODUCT_COPY_FILES += \
 
 # microG
 PRODUCT_PACKAGES += \
-   AppleNlpBackend \
    AuroraServices \
    FakeStore \
    GmsCore \
