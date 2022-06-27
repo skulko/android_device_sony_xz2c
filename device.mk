@@ -70,4 +70,5 @@ PRODUCT_PACKAGES += \
 
 # pre-built Apps
 PRODUCT_PACKAGES += \
+  SimpleGallery \
   SimpleKeyboard
