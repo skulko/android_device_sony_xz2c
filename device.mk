@@ -70,9 +70,11 @@ PRODUCT_PACKAGES += \
    GsfProxy \
    IchnaeaNlpBackend \
    LocalGSMNlpBackend \
+   LocalNLPBackend \
    NominatimNlpBackend
 
 # pre-built Apps
 PRODUCT_PACKAGES += \
-  SimpleGallery \
-  SimpleKeyboard
+   SimpleGallery \
+   SimpleKeyboard \
+   SimpleSMS
