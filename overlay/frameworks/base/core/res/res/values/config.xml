@@ -113,10 +113,34 @@
     <string name="config_mms_user_agent_profile_url" translatable="false"
             >http://uaprof.sonymobile.com/H8324R5201.xml</string>
 
+    <!-- IP address of the dns server to use if nobody else suggests one -->
+    <string name="config_default_dns_server" translatable="false">1.1.1.1</string>
+
     <!-- Remote server that can provide NTP responses. -->
     <string translatable="false" name="config_ntpServer">time.cloudflare.com</string>
 
     <!-- Minimum velocity to initiate a fling, as measured in dips per second. -->
     <dimen name="config_viewMinFlingVelocity">200dp</dimen>
+
+    <!-- The list of IMEs which should be disabled until used.
+         This function suppresses update notifications for these pre-installed apps.
+         We need to set this configuration carefully that they should not have functionarities
+         other than "IME" or "Spell Checker". In InputMethodManagerService,
+         the listed IMEs are disabled until used when all of the following conditions are met.
+         1. Not selected as an enabled IME in the Settings
+         2. Not selected as a spell checker in the Settings
+         3. Installed
+         4. A pre-installed IME
+         5. Not enabled
+         And the disabled_until_used state for an IME is released by InputMethodManagerService
+         when the IME is selected as an enabled IME. -->
+    <string-array name="config_disabledUntilUsedPreinstalledImes" translatable="false">
+        <item>com.android.inputmethod.latin</item>
+        <item>rkr.simplekeyboard.inputmethod</item>
+    </string-array>
+
+    <!-- set to false if we need to show user confirmation
+         when alpha identifier is not provided by the UICC -->
+    <bool name="config_stkNoAlphaUsrCnf">false</bool>
 
 </resources>
