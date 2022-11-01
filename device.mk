@@ -53,3 +53,14 @@ PRODUCT_COPY_FILES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine.conf
+
+# microG
+PRODUCT_PACKAGES += \
+   AuroraServices \
+   FakeStore \
+   GmsCore \
+   GsfProxy \
+   IchnaeaNlpBackend \
+   LocalGSMNlpBackend \
+   LocalNLPBackend \
+   NominatimNlpBackend
