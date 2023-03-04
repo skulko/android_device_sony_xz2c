@@ -64,3 +64,9 @@ PRODUCT_PACKAGES += \
    LocalGSMNlpBackend \
    LocalNLPBackend \
    NominatimNlpBackend
+
+# pre-built Apps
+PRODUCT_PACKAGES += \
+   SimpleGallery \
+   SimpleKeyboard \
+   SimpleSMS
