@@ -59,11 +59,7 @@ PRODUCT_PACKAGES += \
    AuroraServices \
    FakeStore \
    GmsCore \
-   GsfProxy \
-   IchnaeaNlpBackend \
-   LocalGSMNlpBackend \
-   LocalNLPBackend \
-   NominatimNlpBackend
+   GsfProxy
 
 # pre-built Apps
 PRODUCT_PACKAGES += \
