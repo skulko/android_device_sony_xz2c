@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <!-- HTTP URL for network validation, to use for detecting captive portals. -->
+    <string name="config_captive_portal_http_url" translatable="false">http://204.ecloud.global</string>
+
+    <!-- HTTPS URL for network validation, to use for confirming internet connectivity. -->
+    <string name="config_captive_portal_https_url" translatable="false">https://204.ecloud.global</string>
+
+    <!-- List of fallback URLs to use for detecting captive portals. -->
+    <string-array name="config_captive_portal_fallback_urls" translatable="false">
+        <item>https://elementary.io/generate_204</item>
+        <item>http://captiveportal.kuketz.de</item>
+    </string-array>
+
+    <!-- Customized default DNS Servers address. -->
+    <string-array name="config_default_dns_servers" translatable="false">
+	<item>9.9.9.9</item>
+	<item>149.112.112.112</item>
+    </string-array>
+</resources>
