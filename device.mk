@@ -56,7 +56,6 @@ PRODUCT_COPY_FILES += \
 
 # Local app overlay
 PRODUCT_PACKAGES += \
-   AuroraServices \
    FakeStore \
    GmsCore \
    GsfProxy \
